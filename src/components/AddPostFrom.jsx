@@ -4,12 +4,15 @@ function AddPostForm({ onAddPost }) {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
 
+    const maxTitleLength = 100;
+    const remaining = maxTitleLength - title.length;
+
     function handleSubmit(e) {
         e.preventDefault();
-        if (!title.trim() || !body.trim()) return; // ป้องกันส่งว่าง
+        if (!title.trim() || !body.trim()) return;
 
         onAddPost({ title, body });
-        setTitle(""); // เคลียร์ form
+        setTitle("");
         setBody("");
     }
 
@@ -28,21 +31,35 @@ function AddPostForm({ onAddPost }) {
                 เพิ่มโพสต์ใหม่
             </h3>
 
-            <input
-                type="text"
-                placeholder="หัวข้อโพสต์"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                style={{
-                    width: "100%",
-                    padding: "0.5rem",
-                    marginBottom: "0.5rem",
-                    border: "1px solid #cbd5e0",
-                    borderRadius: "4px",
-                    fontSize: "1rem",
-                    boxSizing: "border-box",
-                }}
-            />
+            {/* 🔹 เพิ่มในส่วนของการแสดงผล + ตัวนับ*/}
+            <div style={{ marginBottom: "0.5rem" }}>
+                <input
+                    type="text"
+                    placeholder="หัวข้อโพสต์"
+                    value={title}
+                    maxLength={maxTitleLength}
+                    onChange={(e) => setTitle(e.target.value)}
+                    style={{
+                        width: "100%",
+                        padding: "0.5rem",
+                        border: "1px solid #cbd5e0",
+                        borderRadius: "4px",
+                        fontSize: "1rem",
+                        boxSizing: "border-box",
+                    }}
+                />
+
+                {/* การนับ */}
+                <div
+                    style={{
+                        textAlign: "right",
+                        fontSize: "0.85rem",
+                        color: remaining < 10 ? "red" : "#4a5568",
+                    }}
+                >
+                    {title.length}/{maxTitleLength}
+                </div>
+            </div>
 
             <textarea
                 placeholder="เนื้อหาโพสต์"
