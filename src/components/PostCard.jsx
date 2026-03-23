@@ -31,7 +31,7 @@ function PostCard({ post }) {
             </p>
 
             <div style={{ display: "flex", gap: "0.5rem" }}>
-           
+                
                 <button
                     onClick={() => toggleFavorite(post.id)}
                     style={{
@@ -39,8 +39,9 @@ function PostCard({ post }) {
                         border: "none",
                         cursor: "pointer",
                         fontSize: "1rem",
-            
+                   
                         color: isFavorite ? "#e53e3e" : "#a0aec0",
+                   
                     }}
                 >
                     {isFavorite ? "❤️" : "🤍"}

@@ -7,7 +7,7 @@ import ProfilePage from "./pages/ProfilePage";
 import FavoritesPage from "./pages/FavoritesPage";
 
 function App() {
-  
+ 
   return (
     <FavoritesProvider>
       <BrowserRouter>
