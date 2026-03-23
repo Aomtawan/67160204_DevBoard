@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "../context/FavoritesContext";
 import PostCard from "./PostCard";
 import LoadingSpinner from "./LoadingSpinner";
 import { useFavorites } from "../context/FavoritesContext"; // ✅ เพิ่ม
